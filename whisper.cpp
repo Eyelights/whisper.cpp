@@ -4412,6 +4412,10 @@ int whisper_full_with_state(
                             continue;
                         }
 
+                        if (cur_c >= beam_candidates.size()) {
+                            cur_c = 0;
+                        }
+                        
                         auto & cur = beam_candidates[cur_c++];
 
                         while (beam_candidates.size() > cur_c && beam_candidates[cur_c].sequence.sum_logprobs_all == cur.sequence.sum_logprobs_all && i > 0) {
